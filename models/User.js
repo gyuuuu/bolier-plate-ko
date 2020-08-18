@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        maxlength: 10
+        minlength: 5
     },
     lastname: {
         type: String,
@@ -55,7 +55,7 @@ userSchema.pre('save', function( next ){
     }
 })
 
-userSchema.method.comparePassword = function(plainPassword, cb){
+userSchema.methods.comparePassword = function(plainPassword, cb){
     // ex) plainPassword =  1234567    암호화된 비번 : $2b$10$VK/CCfJjaZanIQsO0AR40eRlckLa0ExNJD48X28SqVN8mc5ulzOoy
     // plainPassword를 암호화해서 DB에 암호화된 비번과 같은 지 확인
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
@@ -64,7 +64,7 @@ userSchema.method.comparePassword = function(plainPassword, cb){
     })
 }
 
-userSchema.method.generateToken = function(cb) {
+userSchema.methods.generateToken = function(cb) {
 
     var user = this;
 
