@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/api/user/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
   //회원가입 할 때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터 베이스에 넣어준다.
 
@@ -42,7 +42,7 @@ app.post('/api/user/register', (req, res) => {
   })
 })
 
-   app.post('/api/user/login', (req, res) => {
+   app.post('/api/users/login', (req, res) => {
   //요청된 이메일을 데이터베이스에서 있는지 찾는다.
   User.findOne({ email: req.body.email }, (err, user) => {
     if(!user){
@@ -70,7 +70,7 @@ app.post('/api/user/register', (req, res) => {
 }) 
 
 // role 0 -> 일반유저 role이 0 이 아니면 관리자
-app.get('/api/user/auth', auth, (req, res) => {
+app.get('/api/users/auth', auth, (req, res) => {
   //여기까지 미들웨어를 통과해 왔다는 얘기는
   // Authentication 이 True라는 말
   res.status(200).json({
@@ -83,6 +83,17 @@ app.get('/api/user/auth', auth, (req, res) => {
     role: req.user.role,
     image: req.user.image
   })
+})
+
+app.get('/api/users/logout', auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id },
+    { token: "" },
+    (err, user) => {
+      if(err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true
+      })
+    })
 })
 
 app.listen(port, () => {
