@@ -16,6 +16,7 @@ bolier plate : 웹 사이트를 만들 때 어디에든 들어가는 필수적�
   2. 회원가입 - REDUX
   3. 로그인 -REDUX
   4. 로그아웃 - REDUX(x) Landing 페이지에서 버튼
+  5. 인증체크 - REDUX 페이지 전환 시 유저의 상태에 따라 달라짐
   
 **Node.js, Express JS, Mongo DB**   
 **React** 사용
