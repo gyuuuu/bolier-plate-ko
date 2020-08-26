@@ -31,7 +31,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if(response.payload.loginSuccess) {
-                    props.history.push('/')
+                    props.history.push('/') // 로그인 성공하면 처음 화면으로 이동
                 } else {
                     alert('Error')
                 }
