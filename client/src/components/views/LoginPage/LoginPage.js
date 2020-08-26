@@ -34,7 +34,7 @@ function LoginPage(props) {
                 if(response.payload.loginSuccess) {
                     props.history.push('/') // 로그인 성공하면 처음 화면으로 이동
                 } else {
-                    alert('Error')
+                    alert(response.payload.message) //뭐가 문제인지 알려줌
                 }
             })
 
