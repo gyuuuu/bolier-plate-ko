@@ -13,6 +13,8 @@ bolier plate : 웹 사이트를 만들 때 어디에든 들어가는 필수적�
   
 ### Front-End
   1. 페이지간 이동 - React Router Dom
+  2. 회원가입 - REDUX
+  3. 로그인 -REDUX
   
 **Node.js, Express JS, Mongo DB**   
 **React** 사용
